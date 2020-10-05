@@ -13227,21 +13227,21 @@ Batting categories include G(games played), PA, HR, R, SB, BBp(BB percentage), K
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step3:-The-correlation-table-and-the-data-of-the-two-year-differential">Step3: The correlation table and the data of the two year differential<a class="anchor-link" href="#Step3:-The-correlation-table-and-the-data-of-the-two-year-differential">&#182;</a></h2>
+<h2 id="Step3:-Print-out-the-data-of-the-two-year-differential-and-correlation-table">Step3: Print out the data of the two year differential and correlation table<a class="anchor-link" href="#Step3:-Print-out-the-data-of-the-two-year-differential-and-correlation-table">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_beforeleaptrim</span><span class="o">=</span><span class="n">df_beforeleap</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;WAR&#39;</span><span class="p">]</span>
 <span class="n">df_leapyeartrim</span><span class="o">=</span><span class="n">df_leapyear</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;G&#39;</span><span class="p">:</span><span class="s1">&#39;WAR&#39;</span><span class="p">]</span>
 <span class="n">df_diff</span><span class="o">=</span><span class="n">df_leapyeartrim</span><span class="o">-</span><span class="n">df_beforeleaptrim</span>
 <span class="n">df_corr_diff</span> <span class="o">=</span> <span class="n">df_diff</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_corr_diff</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;WAR&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_diff</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_corr_diff</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;WAR&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -13258,7 +13258,34 @@ Batting categories include G(games played), PA, HR, R, SB, BBp(BB percentage), K
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>G        0.180927
+<pre>      G   PA  HR    R  RBI  SB    BBp     Kp    ISO  BABIP  ...  IFFBp   HRFB  \
+0   103  425  20   61   82  -2  0.016 -0.005  0.108  0.042  ... -0.012  0.085   
+1    -2   49  25   54   41   5  0.020 -0.037  0.110  0.073  ... -0.007  0.105   
+2   140  648  32  109  100  32  0.023  0.027  0.179  0.119  ...  0.104  0.167   
+3    53  259  29   77   67   4  0.094 -0.063  0.168  0.017  ... -0.025  0.118   
+4    90  372  15   59   61  14  0.042  0.011 -0.007  0.074  ... -0.021  0.001   
+..  ...  ...  ..  ...  ...  ..    ...    ...    ...    ...  ...    ...    ...   
+58   43  279  11   37   42   7  0.015 -0.030  0.057  0.055  ...  0.048  0.032   
+59  107  349  11   53   39  16  0.049 -0.027 -0.036  0.133  ... -0.071  0.045   
+60   33  196  12   34   27   2 -0.003  0.058  0.065  0.042  ... -0.015  0.065   
+61   37  170  16   33   40   4  0.031 -0.002  0.110  0.070  ... -0.043  0.100   
+62   51  276  23   52   55  -3 -0.009  0.012  0.129  0.074  ...  0.067  0.110   
+
+     IFHp  Pullp  Centp  Oppop  Softp   Medp  Hardp  WAR  
+0   0.040 -0.024  0.017  0.007 -0.125  0.042  0.083  8.3  
+1  -0.040 -0.073  0.017  0.057 -0.029 -0.102  0.131  6.5  
+2   0.032  0.064 -0.053 -0.010 -0.021 -0.114  0.135  9.7  
+3  -0.039  0.065 -0.015 -0.050 -0.060 -0.048  0.107  7.7  
+4  -0.003 -0.003 -0.001  0.004 -0.005 -0.001  0.005  7.2  
+..    ...    ...    ...    ...    ...    ...    ...  ...  
+58  0.007  0.018  0.020 -0.038  0.042 -0.102  0.060  4.2  
+59  0.046  0.149  0.095 -0.244 -0.166  0.210 -0.044  4.0  
+60 -0.014 -0.031  0.055 -0.024 -0.082 -0.012  0.095  4.1  
+61 -0.048  0.080 -0.025 -0.056 -0.040 -0.057  0.097  4.7  
+62 -0.010 -0.075  0.051  0.026  0.014 -0.094  0.081  5.0  
+
+[63 rows x 30 columns]
+G        0.180927
 PA       0.182269
 HR       0.133373
 R        0.381860
@@ -13289,33 +13316,6 @@ Medp    -0.031591
 Hardp    0.044388
 WAR      1.000000
 Name: WAR, dtype: float64
-      G   PA  HR    R  RBI  SB    BBp     Kp    ISO  BABIP  ...  IFFBp   HRFB  \
-0   103  425  20   61   82  -2  0.016 -0.005  0.108  0.042  ... -0.012  0.085   
-1    -2   49  25   54   41   5  0.020 -0.037  0.110  0.073  ... -0.007  0.105   
-2   140  648  32  109  100  32  0.023  0.027  0.179  0.119  ...  0.104  0.167   
-3    53  259  29   77   67   4  0.094 -0.063  0.168  0.017  ... -0.025  0.118   
-4    90  372  15   59   61  14  0.042  0.011 -0.007  0.074  ... -0.021  0.001   
-..  ...  ...  ..  ...  ...  ..    ...    ...    ...    ...  ...    ...    ...   
-58   43  279  11   37   42   7  0.015 -0.030  0.057  0.055  ...  0.048  0.032   
-59  107  349  11   53   39  16  0.049 -0.027 -0.036  0.133  ... -0.071  0.045   
-60   33  196  12   34   27   2 -0.003  0.058  0.065  0.042  ... -0.015  0.065   
-61   37  170  16   33   40   4  0.031 -0.002  0.110  0.070  ... -0.043  0.100   
-62   51  276  23   52   55  -3 -0.009  0.012  0.129  0.074  ...  0.067  0.110   
-
-     IFHp  Pullp  Centp  Oppop  Softp   Medp  Hardp  WAR  
-0   0.040 -0.024  0.017  0.007 -0.125  0.042  0.083  8.3  
-1  -0.040 -0.073  0.017  0.057 -0.029 -0.102  0.131  6.5  
-2   0.032  0.064 -0.053 -0.010 -0.021 -0.114  0.135  9.7  
-3  -0.039  0.065 -0.015 -0.050 -0.060 -0.048  0.107  7.7  
-4  -0.003 -0.003 -0.001  0.004 -0.005 -0.001  0.005  7.2  
-..    ...    ...    ...    ...    ...    ...    ...  ...  
-58  0.007  0.018  0.020 -0.038  0.042 -0.102  0.060  4.2  
-59  0.046  0.149  0.095 -0.244 -0.166  0.210 -0.044  4.0  
-60 -0.014 -0.031  0.055 -0.024 -0.082 -0.012  0.095  4.1  
-61 -0.048  0.080 -0.025 -0.056 -0.040 -0.057  0.097  4.7  
-62 -0.010 -0.075  0.051  0.026  0.014 -0.094  0.081  5.0  
-
-[63 rows x 30 columns]
 </pre>
 </div>
 </div>
@@ -13327,13 +13327,13 @@ Name: WAR, dtype: float64
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Step4:-Find-out-the-MAE,-RMSE,-R2">Step4: Find out the MAE, RMSE, R2<a class="anchor-link" href="#Step4:-Find-out-the-MAE,-RMSE,-R2">&#182;</a></h2>
+<h2 id="Step4:-Build-a-regression-tree-model-and-find-out-the-MAE,-RMSE,-R2">Step4: Build a regression tree model and find out the MAE, RMSE, R2<a class="anchor-link" href="#Step4:-Build-a-regression-tree-model-and-find-out-the-MAE,-RMSE,-R2">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -13376,9 +13376,9 @@ Name: WAR, dtype: float64
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Mean Absolute Error: 1.9675824175824173
-Root Mean Squared Error: 2.408288767583546
-R Squared Score is: -3.7123820153061216
+<pre>Mean Absolute Error: 1.7992673992673989
+Root Mean Squared Error: 2.176697386477327
+R Squared Score is: -1.362435668785717
 </pre>
 </div>
 </div>
@@ -13387,9 +13387,25 @@ R Squared Score is: -3.7123820153061216
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result was not a good one judging from negative R2 and so-so correlation coefficient, probably because I tried the correlation with WAR but taking into account of too much batting stats without enough fielding and running.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However still take a look at which stats contribute most in this model.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">importance</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -13410,33 +13426,33 @@ R Squared Score is: -3.7123820153061216
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>wRCp 0.32513125441679036
-IFFBp 0.15473553499154155
-Softp 0.1516055283339745
-OBP 0.13360014021037142
-HR 0.1039482933629447
-RBI 0.04965037978935612
-GBp 0.04246566588345434
-Hardp 0.031040032814516436
-FBp 0.00532641375118345
-BABIP 0.0022470808012804815
-Pullp 0.0002496756445864935
+<pre>BsR 0.2687729434592346
+RBI 0.24990735837065156
+PA 0.11301931847193565
+BABIP 0.10596875203372322
+HR 0.06992560308600772
+Medp 0.06808634810134878
+IFHp 0.06668901419678447
+Centp 0.02018452419689881
+Pullp 0.017124139162415467
+GBp 0.009157793385631252
+GBFB 0.005615797553005234
+SLG 0.004088300618584444
+ISO 0.0014601073637788848
+wRCp 0.0
 wOBA 0.0
-SLG 0.0
+Softp 0.0
 SB 0.0
 R 0.0
-PA 0.0
 Oppop 0.0
-Medp 0.0
+OBP 0.0
 LDp 0.0
 Kp 0.0
-ISO 0.0
-IFHp 0.0
+IFFBp 0.0
+Hardp 0.0
 HRFB 0.0
-GBFB 0.0
 G 0.0
-Centp 0.0
-BsR 0.0
+FBp 0.0
 BBp 0.0
 AVG 0.0
 </pre>
@@ -13450,14 +13466,6 @@ AVG 0.0
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The result was not a good one judging from negative R2 and so-so correlation coefficient, probably because I tried the correlation with WAR but taking into account of too much batting stats without enough fielding and running.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>We turn to a new topic focusing on the batting stats, which include HR, R, BBp, Kp, ISO, BABIP, AVG, OBP, SLG, GBFB, LDp, GBp, FBp, IFFBp, HRFB, IFHp, Pullp, Centp, Oppop, Softp, Medp, Hardp and see if the differential of these categories betweem jump year and previous year are significantly correlated with the the differential of wRC+.</p>
 
 </div>
@@ -13465,15 +13473,15 @@ AVG 0.0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_beforeoff</span><span class="o">=</span><span class="n">df_beforeleap</span><span class="p">[[</span><span class="s1">&#39;HR&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;BBp&#39;</span><span class="p">,</span> <span class="s1">&#39;Kp&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">,</span> <span class="s1">&#39;BABIP&#39;</span><span class="p">,</span> <span class="s1">&#39;AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;OBP&#39;</span><span class="p">,</span> <span class="s1">&#39;SLG&#39;</span><span class="p">,</span> <span class="s1">&#39;GBFB&#39;</span><span class="p">,</span> <span class="s1">&#39;LDp&#39;</span><span class="p">,</span> <span class="s1">&#39;GBp&#39;</span><span class="p">,</span> <span class="s1">&#39;FBp&#39;</span><span class="p">,</span> <span class="s1">&#39;IFFBp&#39;</span><span class="p">,</span> <span class="s1">&#39;HRFB&#39;</span><span class="p">,</span> <span class="s1">&#39;IFHp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullp&#39;</span><span class="p">,</span> <span class="s1">&#39;Centp&#39;</span><span class="p">,</span> <span class="s1">&#39;Oppop&#39;</span><span class="p">,</span> <span class="s1">&#39;Softp&#39;</span><span class="p">,</span> <span class="s1">&#39;Medp&#39;</span><span class="p">,</span> <span class="s1">&#39;Hardp&#39;</span><span class="p">,</span><span class="s1">&#39;wRCp&#39;</span><span class="p">]]</span>
 <span class="n">df_leapoff</span><span class="o">=</span><span class="n">df_leapyear</span><span class="p">[[</span><span class="s1">&#39;HR&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;BBp&#39;</span><span class="p">,</span> <span class="s1">&#39;Kp&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">,</span> <span class="s1">&#39;BABIP&#39;</span><span class="p">,</span> <span class="s1">&#39;AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;OBP&#39;</span><span class="p">,</span> <span class="s1">&#39;SLG&#39;</span><span class="p">,</span> <span class="s1">&#39;GBFB&#39;</span><span class="p">,</span> <span class="s1">&#39;LDp&#39;</span><span class="p">,</span> <span class="s1">&#39;GBp&#39;</span><span class="p">,</span> <span class="s1">&#39;FBp&#39;</span><span class="p">,</span> <span class="s1">&#39;IFFBp&#39;</span><span class="p">,</span> <span class="s1">&#39;HRFB&#39;</span><span class="p">,</span> <span class="s1">&#39;IFHp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullp&#39;</span><span class="p">,</span> <span class="s1">&#39;Centp&#39;</span><span class="p">,</span> <span class="s1">&#39;Oppop&#39;</span><span class="p">,</span> <span class="s1">&#39;Softp&#39;</span><span class="p">,</span> <span class="s1">&#39;Medp&#39;</span><span class="p">,</span> <span class="s1">&#39;Hardp&#39;</span><span class="p">,</span><span class="s1">&#39;wRCp&#39;</span><span class="p">]]</span>
 <span class="n">df_diff_off</span><span class="o">=</span><span class="n">df_leapoff</span><span class="o">-</span><span class="n">df_beforeoff</span>
 <span class="n">df_corr_diff_off</span> <span class="o">=</span> <span class="n">df_diff_off</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_corr_diff_off</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;wRCp&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_diff_off</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_corr_diff_off</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;wRCp&#39;</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -13490,31 +13498,7 @@ AVG 0.0
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>HR       0.508888
-R        0.213211
-BBp      0.227693
-Kp       0.150763
-ISO      0.703420
-BABIP    0.371309
-AVG      0.571028
-OBP      0.761551
-SLG      0.877834
-GBFB    -0.325276
-LDp      0.033460
-GBp     -0.321055
-FBp      0.282038
-IFFBp    0.083147
-HRFB     0.648738
-IFHp    -0.132628
-Pullp    0.283420
-Centp   -0.092512
-Oppop   -0.268495
-Softp   -0.167955
-Medp    -0.237407
-Hardp    0.371935
-wRCp     1.000000
-Name: wRCp, dtype: float64
-    HR    R    BBp     Kp    ISO  BABIP    AVG    OBP    SLG  GBFB  ...  \
+<pre>    HR    R    BBp     Kp    ISO  BABIP    AVG    OBP    SLG  GBFB  ...  \
 0   20   61  0.016 -0.005  0.108  0.042  0.052  0.040  0.160 -0.18  ...   
 1   25   54  0.020 -0.037  0.110  0.073  0.094  0.098  0.205 -0.07  ...   
 2   32  109  0.023  0.027  0.179  0.119  0.129  0.135  0.308 -0.16  ...   
@@ -13541,6 +13525,30 @@ Name: wRCp, dtype: float64
 62  0.067  0.110 -0.010 -0.075  0.051  0.026  0.014 -0.094  0.081   71.0  
 
 [63 rows x 23 columns]
+HR       0.508888
+R        0.213211
+BBp      0.227693
+Kp       0.150763
+ISO      0.703420
+BABIP    0.371309
+AVG      0.571028
+OBP      0.761551
+SLG      0.877834
+GBFB    -0.325276
+LDp      0.033460
+GBp     -0.321055
+FBp      0.282038
+IFFBp    0.083147
+HRFB     0.648738
+IFHp    -0.132628
+Pullp    0.283420
+Centp   -0.092512
+Oppop   -0.268495
+Softp   -0.167955
+Medp    -0.237407
+Hardp    0.371935
+wRCp     1.000000
+Name: wRCp, dtype: float64
 </pre>
 </div>
 </div>
@@ -13549,9 +13557,17 @@ Name: wRCp, dtype: float64
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Visualize the correlation table</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -13618,7 +13634,7 @@ Name: wRCp, dtype: float64
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
@@ -13661,9 +13677,9 @@ Name: wRCp, dtype: float64
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Mean Absolute Error: 11.23076923076923
-Root Mean Squared Error: 14.403525209529036
-R Squared Score is: 0.6913155253473262
+<pre>Mean Absolute Error: 10.132867132867132
+Root Mean Squared Error: 14.134053056958235
+R Squared Score is: 0.6183085059347685
 </pre>
 </div>
 </div>
@@ -13672,9 +13688,17 @@ R Squared Score is: 0.6913155253473262
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result was pretty nice because more than 60% of the variance for the dependent variable(wRC+ gain) was explained by these independent variables in the model.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">importance</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">X2_train</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -13695,28 +13719,28 @@ R Squared Score is: 0.6913155253473262
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>SLG 0.6403694812602536
-OBP 0.2051029123341741
-AVG 0.10867789810146299
-BABIP 0.010977159198084903
-LDp 0.010589952263366184
-HRFB 0.007661030864485111
-GBFB 0.00611975838287273
-FBp 0.004564634596278609
-Centp 0.0027293366861886096
-R 0.0016117882160652484
-BBp 0.0015960480967677335
+<pre>SLG 0.7315124241028729
+OBP 0.14239912282977266
+BABIP 0.07110624992434106
+LDp 0.014588509322298824
+Kp 0.013695551088390606
+BBp 0.012385389451557028
+AVG 0.00684480257718867
+IFFBp 0.0026436263503857053
+FBp 0.0021207758055316623
+R 0.0015227287778218713
+IFHp 0.0006344703240925692
+HR 0.0002819868107078086
+Centp 0.00021149010803085642
+HRFB 5.287252700774616e-05
 Softp 0.0
 Pullp 0.0
 Oppop 0.0
 Medp 0.0
-Kp 0.0
 ISO 0.0
-IFHp 0.0
-IFFBp 0.0
 Hardp 0.0
-HR 0.0
 GBp 0.0
+GBFB 0.0
 </pre>
 </div>
 </div>
@@ -13729,6 +13753,262 @@ GBp 0.0
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As it turned out it is the SLG, OBP that took the large component of responsibility of this model, which is not surprising given the fact that these two categories are popular and largely seen as a standard for players' offensive output.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result between batting stats and wRC+ was pretty nice. Thus I used the same batting stats again, this time see the correlation with wOBA</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_beforeoff2</span><span class="o">=</span><span class="n">df_beforeleap</span><span class="p">[[</span><span class="s1">&#39;HR&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;BBp&#39;</span><span class="p">,</span> <span class="s1">&#39;Kp&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">,</span> <span class="s1">&#39;BABIP&#39;</span><span class="p">,</span> <span class="s1">&#39;AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;OBP&#39;</span><span class="p">,</span> <span class="s1">&#39;SLG&#39;</span><span class="p">,</span> <span class="s1">&#39;GBFB&#39;</span><span class="p">,</span> <span class="s1">&#39;LDp&#39;</span><span class="p">,</span> <span class="s1">&#39;GBp&#39;</span><span class="p">,</span> <span class="s1">&#39;FBp&#39;</span><span class="p">,</span> <span class="s1">&#39;IFFBp&#39;</span><span class="p">,</span> <span class="s1">&#39;HRFB&#39;</span><span class="p">,</span> <span class="s1">&#39;IFHp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullp&#39;</span><span class="p">,</span> <span class="s1">&#39;Centp&#39;</span><span class="p">,</span> <span class="s1">&#39;Oppop&#39;</span><span class="p">,</span> <span class="s1">&#39;Softp&#39;</span><span class="p">,</span> <span class="s1">&#39;Medp&#39;</span><span class="p">,</span> <span class="s1">&#39;Hardp&#39;</span><span class="p">,</span><span class="s1">&#39;wOBA&#39;</span><span class="p">]]</span>
+<span class="n">df_leapoff2</span><span class="o">=</span><span class="n">df_leapyear</span><span class="p">[[</span><span class="s1">&#39;HR&#39;</span><span class="p">,</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;BBp&#39;</span><span class="p">,</span> <span class="s1">&#39;Kp&#39;</span><span class="p">,</span> <span class="s1">&#39;ISO&#39;</span><span class="p">,</span> <span class="s1">&#39;BABIP&#39;</span><span class="p">,</span> <span class="s1">&#39;AVG&#39;</span><span class="p">,</span> <span class="s1">&#39;OBP&#39;</span><span class="p">,</span> <span class="s1">&#39;SLG&#39;</span><span class="p">,</span> <span class="s1">&#39;GBFB&#39;</span><span class="p">,</span> <span class="s1">&#39;LDp&#39;</span><span class="p">,</span> <span class="s1">&#39;GBp&#39;</span><span class="p">,</span> <span class="s1">&#39;FBp&#39;</span><span class="p">,</span> <span class="s1">&#39;IFFBp&#39;</span><span class="p">,</span> <span class="s1">&#39;HRFB&#39;</span><span class="p">,</span> <span class="s1">&#39;IFHp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pullp&#39;</span><span class="p">,</span> <span class="s1">&#39;Centp&#39;</span><span class="p">,</span> <span class="s1">&#39;Oppop&#39;</span><span class="p">,</span> <span class="s1">&#39;Softp&#39;</span><span class="p">,</span> <span class="s1">&#39;Medp&#39;</span><span class="p">,</span> <span class="s1">&#39;Hardp&#39;</span><span class="p">,</span><span class="s1">&#39;wOBA&#39;</span><span class="p">]]</span>
+<span class="n">df_diff_off2</span><span class="o">=</span><span class="n">df_leapoff2</span><span class="o">-</span><span class="n">df_beforeoff2</span>
+<span class="n">df_corr_diff_off2</span> <span class="o">=</span> <span class="n">df_diff_off2</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_diff_off2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_corr_diff_off2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;wOBA&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>    HR    R    BBp     Kp    ISO  BABIP    AVG    OBP    SLG  GBFB  ...  \
+0   20   61  0.016 -0.005  0.108  0.042  0.052  0.040  0.160 -0.18  ...   
+1   25   54  0.020 -0.037  0.110  0.073  0.094  0.098  0.205 -0.07  ...   
+2   32  109  0.023  0.027  0.179  0.119  0.129  0.135  0.308 -0.16  ...   
+3   29   77  0.094 -0.063  0.168  0.017  0.057  0.116  0.226 -0.28  ...   
+4   15   59  0.042  0.011 -0.007  0.074  0.044  0.066  0.038  0.04  ...   
+..  ..  ...    ...    ...    ...    ...    ...    ...    ...   ...  ...   
+58  11   37  0.015 -0.030  0.057  0.055  0.059  0.072  0.115 -0.04  ...   
+59  11   53  0.049 -0.027 -0.036  0.133  0.115  0.141  0.079  0.67  ...   
+60  12   34 -0.003  0.058  0.065  0.042  0.019  0.015  0.084 -0.30  ...   
+61  16   33  0.031 -0.002  0.110  0.070  0.065  0.086  0.175 -0.20  ...   
+62  23   52 -0.009  0.012  0.129  0.074  0.073  0.072  0.202 -0.39  ...   
+
+    IFFBp   HRFB   IFHp  Pullp  Centp  Oppop  Softp   Medp  Hardp   wOBA  
+0  -0.012  0.085  0.040 -0.024  0.017  0.007 -0.125  0.042  0.083  0.071  
+1  -0.007  0.105 -0.040 -0.073  0.017  0.057 -0.029 -0.102  0.131  0.118  
+2   0.104  0.167  0.032  0.064 -0.053 -0.010 -0.021 -0.114  0.135  0.178  
+3  -0.025  0.118 -0.039  0.065 -0.015 -0.050 -0.060 -0.048  0.107  0.123  
+4  -0.021  0.001 -0.003 -0.003 -0.001  0.004 -0.005 -0.001  0.005  0.045  
+..    ...    ...    ...    ...    ...    ...    ...    ...    ...    ...  
+58  0.048  0.032  0.007  0.018  0.020 -0.038  0.042 -0.102  0.060  0.072  
+59 -0.071  0.045  0.046  0.149  0.095 -0.244 -0.166  0.210 -0.044  0.099  
+60 -0.015  0.065 -0.014 -0.031  0.055 -0.024 -0.082 -0.012  0.095  0.041  
+61 -0.043  0.100 -0.048  0.080 -0.025 -0.056 -0.040 -0.057  0.097  0.107  
+62  0.067  0.110 -0.010 -0.075  0.051  0.026  0.014 -0.094  0.081  0.106  
+
+[63 rows x 23 columns]
+HR       0.573070
+R        0.209447
+BBp      0.284463
+Kp       0.180227
+ISO      0.747745
+BABIP    0.342174
+AVG      0.550492
+OBP      0.784717
+SLG      0.909761
+GBFB    -0.346554
+LDp      0.006658
+GBp     -0.340681
+FBp      0.313535
+IFFBp    0.047101
+HRFB     0.682351
+IFHp    -0.144632
+Pullp    0.290097
+Centp   -0.111656
+Oppop   -0.262779
+Softp   -0.184035
+Medp    -0.250701
+Hardp    0.396958
+wOBA     1.000000
+Name: wOBA, dtype: float64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1">#-----plot the correlation table as bar plot----------------------</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_corr_diff_off2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df_corr_diff_off2</span><span class="p">[</span><span class="s1">&#39;wOBA&#39;</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">df_corr_diff_off2</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;correlation coefficent with wOBA&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split data into X and y</span>
+<span class="n">X3</span> <span class="o">=</span> <span class="n">df_diff_off2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;HR&#39;</span><span class="p">:</span><span class="s1">&#39;Hardp&#39;</span><span class="p">]</span>
+<span class="n">Y3</span> <span class="o">=</span> <span class="n">df_diff_off2</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;wOBA&#39;</span><span class="p">]</span>
+
+<span class="c1"># split data into train and test sets</span>
+<span class="n">X3_train</span><span class="p">,</span> <span class="n">X3_test</span><span class="p">,</span> <span class="n">y3_train</span><span class="p">,</span> <span class="n">y3_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X3</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># define the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">criterion</span> <span class="o">=</span> <span class="s1">&#39;mse&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X3_train</span><span class="p">,</span> <span class="n">y3_train</span><span class="p">)</span>
+
+<span class="c1"># make predictions for test data</span>
+<span class="n">y3_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X3_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Error:&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y3_test</span><span class="p">,</span> <span class="n">y3_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y3_test</span><span class="p">,</span> <span class="n">y3_pred</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R Squared Score is:&#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y3_test</span><span class="p">,</span> <span class="n">y3_pred</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mean Absolute Error: 0.016232142857142858
+Root Mean Squared Error: 0.020314841621258288
+R Squared Score is: 0.7484161489396279
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result between batting stats and wOBA was even better. More than 74% of the variance for the dependent variable(wOBA) was explained by these independent variables in the model. MAE and RMSE were smaller in this case as well.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">importance</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">X3_train</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">importance</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>SLG 0.8505594411723238
+OBP 0.060847303016411745
+LDp 0.03592799110241595
+HRFB 0.02082987334541791
+Centp 0.01979948384447755
+IFFBp 0.005093637431345794
+AVG 0.0019041223323669565
+Kp 0.0017048317509533082
+IFHp 0.001410460986938324
+BBp 0.0009944851880561482
+Oppop 0.0006308507148603866
+Hardp 0.0002975191144319763
+Softp 0.0
+R 0.0
+Pullp 0.0
+Medp 0.0
+ISO 0.0
+HR 0.0
+GBp 0.0
+GBFB 0.0
+FBp 0.0
+BABIP 0.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When again taking a deep look into the data, we can see that HR, ISO, AVG, OBP, SLG, HR/FB are still the categories that had more than 0.5 correlation coefficient. If we focus on the batted ball type(LDp, GBp, FBp), Batted ball direction(Pullp, Centp, Oppop), Quality of contact(Softp, Medp, Hardp), more fly ball, pull and hard contact percentage are still the main conclusion, further varify the result.<br></p>
 
 </div>
 </div>
